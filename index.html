@@ -3,18 +3,47 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Memory Game!!!</title>
-
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css"/>
 </head>
 <body>
 <h1>Memory Game!!!</h1>
-<p id="elapsed-seconds"></p>
+<div class="container-fluid">
+    <button id="newGame" type="button" class="btn btn-default btn-lg btn-lg">Start New Game</button>
+    <div class="row">
+        <div class="col-xs-3">Elapsed Time (sec): <span id="elapsed-seconds"></span></div>
+        <div class="col-xs-3">Matches: <span id="matches"></span></div>
+        <div class="col-xs-3">Remaining: <span id="remaining"></span></div>
+        <div class="col-xs-3">Missed: <span id="misses"></span></div>
+    </div>
+    <div id="game-board"></div>
+</div>
 
-<div id="game-board"></div>
+<div class="modal fade" id="confirm-exit-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Are You Sure?</h4>
+            </div>
+            <div class="modal-body">
+                <p>Are you positive you want to restart?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" id="confirm-restart-button">Restart</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+
+<!--<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>-->
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>-->
+<script src="js/jquery-2.1.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/lo-dash.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>
