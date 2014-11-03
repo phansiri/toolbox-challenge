@@ -87,7 +87,7 @@ $(document).ready(function() {
         img.slideUp(100, function () {
             if (tile.flipped) {
                 //console.log(tile);
-                img.attr('src', 'img/tile-back.png')
+                img.attr('src', 'img/Triforce-back.jpg')
             } else {
                 //console.log(tile);
                 img.attr('src', tile.src);
@@ -126,7 +126,7 @@ $(document).ready(function() {
             }
             img = $(document.createElement('img'));
             img.attr({
-                src: 'img/tile-back.png',
+                src: 'img/Triforce-back.jpg',
                 alt: 'image of tile ' + tile.tileNum
             });
             img.data('tile', tile);
