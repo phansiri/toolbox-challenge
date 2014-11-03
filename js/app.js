@@ -28,7 +28,6 @@ $(document).ready(function() {
         $('#game-board img').click(function () {
             var img = $(this);
             var tile = img.data('tile');
-
             if (count < 2 && !tile.flipped) {
                 count++;
                 flipAction(img, tile);
@@ -77,7 +76,6 @@ $(document).ready(function() {
                     count = 0;
                 }
             }
-
         }); //on click of gameboard images
     }
     function flipAction(img, tile) {
@@ -94,7 +92,6 @@ $(document).ready(function() {
             img.slideDown(100);
         }); //after fadeOut
     }
-
     function createGame () {
         var tiles = [];
         var idx;
@@ -111,9 +108,7 @@ $(document).ready(function() {
             tilePairs.push(_.clone(tile));
             tilePairs.push(_.clone(tile));
         });
-
         tilePairs = _.shuffle(tilePairs);
-
         var gameBoard = $('#game-board');
         var row = $(document.createElement('div'));
         var img;
@@ -134,7 +129,6 @@ $(document).ready(function() {
         clicker();
         timer();
     }
-
     // timer
     function timer() {
         startTime = _.now();
@@ -147,7 +141,6 @@ $(document).ready(function() {
             }
         }, 1000);
     }
-
     function stopTimer(timer) {
         window.clearInterval(timer);
     }
@@ -156,7 +149,6 @@ $(document).ready(function() {
     }
     function whatsMissed() {
         $('#misses').text(misses);
-
     }
     function whatsMatch() {
         $('#matches').text(matches);
