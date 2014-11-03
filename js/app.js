@@ -9,7 +9,6 @@ $(document).ready(function() {
     var matches = 0;
     var misses = 0;
 
-    //start initial game button
     $('#newGame').click(function() {
         //initial start of the game
         if (!start) {
@@ -21,7 +20,6 @@ $(document).ready(function() {
         }
     }); // modal start game
 
-    //modal function
     $('#confirm-restart-button').click(function() {
         newGame();
     }); //modal restart

@@ -26,17 +26,24 @@ h1 {
     width: 25%;
 }
 
+div img {
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    border-radius: 40px;
+    -webkit-box-shadow: #B3B3B3 4px 4px 4px;
+    -moz-box-shadow: #B3B3B3 4px 4px 4px;
+    box-shadow: #B3B3B3 4px 4px 4px;
+}
 
 #game-board img {
     width: 200px;
     height: 200px;
     margin-right: 5px;
-    padding: .5em;
+    padding: 1em;
 }
 
 #game-board {
     padding: 1em;
-    margin-left: 25%;
 }
 
 .row {
@@ -47,5 +54,9 @@ h1 {
     margin-top: 1px;
     margin-right: 1em;
     margin-left: 1em;
+}
+
+#game-board div {
+    margin-left: 25%;
 }
 
