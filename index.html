@@ -7,43 +7,70 @@
     <link rel="stylesheet" href="css/main.css"/>
 </head>
 <body>
-<h1>Memory Game!!!</h1>
-<div class="container-fluid">
-    <button id="newGame" type="button" class="btn btn-default btn-lg btn-lg">Start New Game</button>
-    <div class="row">
-        <div class="col-xs-3">Elapsed Time (sec): <span id="elapsed-seconds"></span></div>
-        <div class="col-xs-3">Matches: <span id="matches"></span></div>
-        <div class="col-xs-3">Remaining: <span id="remaining"></span></div>
-        <div class="col-xs-3">Missed: <span id="misses"></span></div>
+    <h1 class="jumbotron">Memory Game!  Hyrule style! <p>How to play.  1. click on two tiles.  2.  wait til the music finish.  3.  did you get a pair?  4.  keep going.</p></h1>
+
+    <div class="container-fluid">
+        <button id="newGame" type="button" class="btn btn-default btn-lg btn-block">Start New Game</button>
+        <br>
+        <div class="row">
+            <div class="col-xs-3">Elapsed Time (sec): <span id="elapsed-seconds">0</span></div>
+            <div class="col-xs-3">Matches: <span id="matches">0</span></div>
+            <div class="col-xs-3">Remaining: <span id="remaining">8</span></div>
+            <div class="col-xs-3">Missed: <span id="misses">0</span></div>
+        </div>
+        <div id="game-board"></div>
     </div>
-    <div id="game-board"></div>
-</div>
 
-<div class="modal fade" id="confirm-exit-modal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Are You Sure?</h4>
-            </div>
-            <div class="modal-body">
-                <p>Are you positive you want to restart?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal" id="confirm-restart-button">Restart</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+    <div class="modal fade" id="confirm-exit-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Are You Sure?</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Are you positive you want to restart?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="confirm-restart-button">Restart</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
+    <div class="modal fade" id="confirm-replay">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Congratulations!!!!</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Would you like to play again??? Or should I send you away?!?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="send-away">Send me away</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="#yes-replay">Yes, let me play again</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
+    <audio preload="auto" id="wrong">
+        <source src="http://noproblo.dayjo.org/ZeldaSounds/OOT/OOT_YoungLink_Choke1.wav" type="audio/wav">
+    </audio>
+    <audio preload="auto" id="correct">
+        <source src="http://noproblo.dayjo.org/ZeldaSounds/LTTP/LTTP_ItemFanfare_Stereo.wav" type="audio/wav">
+    </audio>
+    <audio preload="auto" id="charging">
+        <source src="http://noproblo.dayjo.org/ZeldaSounds/OOT/OOT_Twinrova_Fire_Charge.wav" type="audio/wav">
+    </audio>
+    <audio preload="auto" id="victory">
+        <source src="audio/FFVictory.mp3" type="audio/mp3">
+    </audio>
 
-<!--<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>-->
-<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>-->
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>-->
-<script src="js/jquery-2.1.1.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/lo-dash.js"></script>
-<script src="js/app.js"></script>
+    <script src="js/jquery-2.1.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/lo-dash.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>

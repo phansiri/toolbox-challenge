@@ -1,3 +1,31 @@
+@import url(http://fonts.googleapis.com/css?family=Oswald);
+
+body {
+    background-image: url("../img/loz-bg-img.jpg");
+    /*background-color: #375896;*/
+
+}
+
+.jumbotron {
+    padding: 1px;
+    background: rgba(255, 91, 93, 0.5);
+    margin-bottom: 1px;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Oswald', "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.btn-lg {
+    padding: 7px 40px;
+    font-size: 24px;
+    background-color: chartreuse;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+}
+
 
 #game-board img {
     width: 200px;
@@ -8,17 +36,16 @@
 
 #game-board {
     padding: 1em;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 25%;
 }
 
 .row {
-    font-size: 1em;
-}
-
-.row {
+    font-size: 2em;
+    font-weight: bolder;
+    color: #ffff00;
     border: double;
-    padding: 1em;
-
-
+    margin-top: 1px;
+    margin-right: 1em;
+    margin-left: 1em;
 }
+

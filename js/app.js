@@ -9,26 +9,21 @@ $(document).ready(function() {
     var matches = 0;
     var misses = 0;
 
-    //new game button
+    //start initial game button
     $('#newGame').click(function() {
         //initial start of the game
         if (!start) {
             $('#confirm-exit-modal').modal();
+            stopTimer(startTime);
         } else {
             createGame();
             start = false;
         }
-
     }); // modal start game
 
     //modal function
     $('#confirm-restart-button').click(function() {
-        $('#game-board').empty();
-        createGame();
-        if (startTime > 0) {
-            clearInterval(startTime);
-            timer();
-        }
+        newGame();
     }); //modal restart
 
     function clicker () {
@@ -36,40 +31,51 @@ $(document).ready(function() {
             var img = $(this);
             var tile = img.data('tile');
 
-
             if (count < 2 && !tile.flipped) {
                 count++;
                 flipAction(img, tile);
-                //guess #1
                 if (count == 1 ) {
+                    $('#charging').trigger('play');
                     lastGuess.push(img);
                     lastGuess.push(tile);
                     console.log(lastGuess);
-                } else { //guess #2
-                    // matching pair
+                    //test for stop time
+                    stopTimer(startTime);
+                } else {
                     if (lastGuess[1].tileNum == tile.tileNum) {
-                        alert('You got a match!');
                         matches++;
-                        console.log('matches '+matches);
                         remaining--;
-                        console.log('remaining ' + remaining);
+                        whatsMatch();
+                        whatsLeft();
                         lastGuess.pop();
                         lastGuess.pop();
-                        console.log(lastGuess);
+                        if (matches == 8) {
+                            stopTimer(startTime);
+                            //modal of some type
+                            $('#victory').trigger('play');
+                            $('#confirm-replay').modal();
+                            $('#send-away').click(function() {
+                                window.location = 'http://zelda.com/universe/?ref=https://www.google.com/';
+                            });
+                            $('#confirm-replay').click(function() {
+                                newGame();
+                            });
+                        } else {
+                            $('#correct').trigger('play');
+                        }
                     } else { // not a match
-                        console.log(lastGuess);
+                        $('#wrong').trigger('play');
                         window.setTimeout(function() {
                             flipAction(lastGuess[0], lastGuess[1]);
                             flipAction(img, tile);
                             lastGuess.pop();
                             lastGuess.pop();
                             console.log(lastGuess);
-
-                            //the code in here will run only once after 1 second has elapsed
-                        }, 1000);
-
+                            misses++;
+                            whatsMissed();
+                        }, 1000); //the code in here will run only once after 1 second has elapsed
                     }
-                    // reset
+                    // reset count
                     count = 0;
                 }
             }
@@ -78,7 +84,7 @@ $(document).ready(function() {
     }
     function flipAction(img, tile) {
         //jquery functions besides tile.flipped
-        img.fadeOut(100, function () {
+        img.slideUp(100, function () {
             if (tile.flipped) {
                 //console.log(tile);
                 img.attr('src', 'img/tile-back.png')
@@ -87,7 +93,7 @@ $(document).ready(function() {
                 img.attr('src', tile.src);
             }
             tile.flipped = !tile.flipped;
-            img.fadeIn(100);
+            img.slideDown(100);
         }); //after fadeOut
     }
 
@@ -132,7 +138,7 @@ $(document).ready(function() {
     }
 
     // timer
-    function timer () {
+    function timer() {
         startTime = _.now();
         var timer = window.setInterval(function () {
             var elapsedSeconds = Math.floor((_.now() - startTime) / 1000);
@@ -143,10 +149,30 @@ $(document).ready(function() {
             }
         }, 1000);
     }
-    
-    $('#remaining').text(remaining);
-    $('#misses').text(misses);
-    $('#matches').text(matches);
 
+    function stopTimer(timer) {
+        window.clearInterval(timer);
+    }
+    function whatsLeft() {
+        $('#remaining').text(remaining);
+    }
+    function whatsMissed() {
+        $('#misses').text(misses);
 
+    }
+    function whatsMatch() {
+        $('#matches').text(matches);
+    }
+    function newGame() {
+        $('#game-board').empty();
+        $('#victory').trigger('pause');
+        remaining = 8;
+        matches = 0;
+        misses = 0;
+        createGame();
+        whatsLeft();
+        whatsMatch();
+        whatsMissed();
+        timer();
+    }
 }); //jQuery Ready Function
